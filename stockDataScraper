@@ -1,0 +1,60 @@
+import urllib
+import re
+import time
+import sys
+
+
+name1=raw_input("enter company's code name  :")
+
+startTime = raw_input('enter start time hh:mm:ss')
+
+stopTime = raw_input('enter close time hh:mm:ss')
+
+fo = open(name1+".txt", "a+")
+
+name=str.lower(name1)
+
+
+while (True):
+
+    localtime = time.asctime( time.localtime(time.time()) )
+
+    if(localtime[11:19] == startTime):
+
+        while (True):
+
+            localtime = time.asctime( time.localtime(time.time()) )
+
+            
+            
+                
+                
+            if(localtime[11:19]==stopTime):
+            
+                break
+            
+            u="https://in.finance.yahoo.com/q?s="+name+"&ql=0"
+            
+            h=urllib.urlopen(u)
+            
+            d=h.read()
+            
+            localtime1 = time.asctime( time.localtime(time.time()) )
+            
+            regex='<span id="yfs_l84_'+name+'">(.+?)</span>'
+            
+            p = re.compile(regex)
+            
+            f=re.findall(p,d)
+            
+            data=  name+'  :  '+f[0]+'  :  '+localtime1
+            
+            fo.write(data+"\n")
+            
+            print (data)
+
+
+        fo.close()   
+        sys.exit()
+
+
