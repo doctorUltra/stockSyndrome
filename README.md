@@ -1,0 +1,2 @@
+# stockSyndrome
+deal with stocks
