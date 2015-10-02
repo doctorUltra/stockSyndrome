@@ -4,7 +4,7 @@ import time
 import sys
 
 
-name1=raw_input("enter company's code name  :")
+name1=raw_input("enter company's code name   :")                    #eg- yhoo, aapl 
 
 startTime = raw_input('enter start time hh:mm:ss')
 
